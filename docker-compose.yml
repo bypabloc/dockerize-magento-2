@@ -2,6 +2,10 @@
 
 version: '3'
 
+volumes:
+  db-data:
+  es-data:
+
 services:
   web:
     build: .
@@ -9,8 +13,34 @@ services:
     ports:
       - "8087:80"
     environment:
-      - MYSQL_HOST=127.0.0.1
+      - MYSQL_HOST=db
       - MYSQL_USER=root
       - MYSQL_PASSWORD=123456
       - MYSQL_DATABASE=magento2
-      - MYSQL_PORT=3307
+      - MYSQL_PORT=3306
+      - ELASTICSEARCH_HOST=elasticsearch
+    depends_on:
+      - db
+      - elasticsearch
+
+  db:
+    image: mysql:5.7
+    container_name: magento2-db
+    ports:
+      - "3317:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=magento2
+    volumes:
+      - db-data:/var/lib/mysql
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    container_name: magento2-elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
