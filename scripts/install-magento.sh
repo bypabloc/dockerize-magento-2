@@ -5,22 +5,22 @@
 # Comprueba si Magento ya está instalado
 if [ ! -f "app/etc/env.php" ]; then
     php bin/magento setup:install \
-        --base-url="http://localhost:8087" \
-        --db-host="db" \
-        --db-name="magento2" \
-        --db-user="root" \
-        --db-password="123456" \
-        --admin-firstname="Admin" \
-        --admin-lastname="Admin" \
-        --admin-email="admin@example.com" \
-        --admin-user="admin" \
-        --admin-password="Testing123%567" \
-        --use-rewrites="1" \
-        --backend-frontname="admin" \
-        --db-prefix=mage_ \
-        --search-engine="elasticsearch7" \
-        --elasticsearch-host="elasticsearch" \
-        --elasticsearch-port=9200
+        --base-url="${BASE_URL}" \
+        --db-host="${MYSQL_HOST}" \
+        --db-name="${MYSQL_DATABASE}" \
+        --db-user="${MYSQL_USER}" \
+        --db-password="${MYSQL_PASSWORD}" \
+        --admin-firstname="${ADMIN_FIRSTNAME}" \
+        --admin-lastname="${ADMIN_LASTNAME}" \
+        --admin-email="${ADMIN_EMAIL}" \
+        --admin-user="${ADMIN_USER}" \
+        --admin-password="${ADMIN_PASSWORD}" \
+        --use-rewrites="${USE_REWRITES}" \
+        --backend-frontname="${BACKEND_FRONTNAME}" \
+        --db-prefix="${DB_PREFIX}" \
+        --search-engine="${SEARCH_ENGINE}" \
+        --elasticsearch-host="${ELASTICSEARCH_HOST}" \
+        --elasticsearch-port="${ELASTICSEARCH_PORT}" \
 
     php bin/magento indexer:reindex
 
