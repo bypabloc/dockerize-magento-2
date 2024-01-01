@@ -60,12 +60,16 @@ RUN apt-get update && apt-get install -y \
 # Copiar el código fuente de Magento 2 en el contenedor
 COPY . .
 
+# Instalar dependencias con Composer
+RUN composer install --no-interaction --optimize-autoloader
+
 # Ajustar permisos
 RUN find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} + && \
     find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} + && \
     chmod u+x bin/magento && \
     chown -R www-data:www-data .
 
+# Establecer permisos
 RUN chmod -Rf 777 var && chmod -Rf 777 pub/static && chmod -Rf 777 pub/media && chmod 777 ./app/etc && chmod 644 ./app/etc/*.xml && chmod -Rf 775 bin
 
 # Copiar scripts al contenedor
