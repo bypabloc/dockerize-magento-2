@@ -40,3 +40,4 @@ docker compose up -d --no-cache --build --remove-orphans --force-recreate
 - [ ] move folder `magento` to `src`
 - [ ] move files Docker to folder `docker`
 - [ ] vars `COMPOSER_MAGENTO_USERNAME` and `COMPOSER_MAGENTO_PASSWORD` in `.env` file
+- [ ] tests in other versions of Php
