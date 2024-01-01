@@ -3,6 +3,8 @@
 ## Environment versions
 
 - Windows 11 Pro v23H2
+- WSL2 v2.0.9
+- Ubuntu 20.04.6 LTS
 - Docker Desktop v4.25.2
 - Docker version 24.0.7
 - Docker Compose version v2.18.1
