@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Path: ./scripts/install-magento.sh
+# Path: docker/scripts/install-magento.sh
 
 # Comprueba si Magento ya está instalado
 if [ ! -f "app/etc/env.php" ]; then
@@ -31,6 +31,8 @@ if [ ! -f "app/etc/env.php" ]; then
     php bin/magento module:disable Magento_TwoFactorAuth
 
     php bin/magento cache:flush
+
+    php bin/magento deploy:mode:set developer
 fi
 
 # Inicia el servidor Apache para mantener el contenedor corriendo

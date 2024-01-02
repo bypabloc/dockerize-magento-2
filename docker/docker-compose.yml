@@ -11,10 +11,12 @@ services:
     build:
       context: ../
       dockerfile: docker/Dockerfile
-    container_name: magento2
+    container_name: magento2-web
     ports:
       - "${BASE_URL_PORT:-8087}:80"
     env_file: ../.env
+    # volumes:
+    #   - ./src:/var/www/html
     depends_on:
       - db
       - elasticsearch

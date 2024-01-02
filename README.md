@@ -29,10 +29,22 @@ cp auth.json.example auth.json
 
 Note: Change the values of the variables in the auth.json file
 
-## Run project
+## Build docker
+
+```bash
+docker compose -p magento2_project -f docker/docker-compose.yml build --no-cache
+```
+
+## Run docker
 
 ```bash
 docker compose -p magento2_project -f docker/docker-compose.yml up -d --build --remove-orphans --force-recreate
+```
+
+## Build and run docker
+
+```bash
+docker compose -p magento2_project -f docker/docker-compose.yml build --no-cache && docker compose -p magento2_project -f docker/docker-compose.yml up -d --build --remove-orphans --force-recreate
 ```
 
 ## TODOs

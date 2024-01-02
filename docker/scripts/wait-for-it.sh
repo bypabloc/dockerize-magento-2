@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Path: ./scripts/wait-for-it.sh
+# Path: docker/scripts/wait-for-it.sh
 
 set -e
 
