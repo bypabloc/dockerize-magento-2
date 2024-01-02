@@ -16,10 +16,10 @@ services:
       - "${BASE_URL_PORT:-8087}:80"
     env_file: ../.env
     volumes:
-      - ./src/app/design:/var/www/html/app/design
-      - ./src/app/code:/var/www/html/app/code
-      - ./src/pub/media:/var/www/html/pub/media
-      - ./src/app/i18n:/var/www/html/app/i18n
+      - ../src/app/design:/var/www/html/app/design
+      - ../src/app/code:/var/www/html/app/code
+      - ../src/pub/media:/var/www/html/pub/media
+      - ../src/app/i18n:/var/www/html/app/i18n
     depends_on:
       - db
       - elasticsearch
