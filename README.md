@@ -32,12 +32,9 @@ Note: Change the values of the variables in the auth.json file
 ## Run project
 
 ```bash
-docker compose up -d --no-cache --build --remove-orphans --force-recreate
+docker compose -p magento2_project -f docker/docker-compose.yml up -d --build --remove-orphans --force-recreate
 ```
 
 ## TODOs
 
-- [ ] move folder `magento` to `src`
-- [ ] move files Docker to folder `docker`
-- [ ] vars `COMPOSER_MAGENTO_USERNAME` and `COMPOSER_MAGENTO_PASSWORD` in `.env` file
 - [ ] tests in other versions of Php

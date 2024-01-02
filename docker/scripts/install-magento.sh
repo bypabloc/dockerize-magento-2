@@ -6,10 +6,10 @@
 if [ ! -f "app/etc/env.php" ]; then
     php bin/magento setup:install \
         --base-url="${BASE_URL}" \
-        --db-host="${MYSQL_HOST}" \
-        --db-name="${MYSQL_DATABASE}" \
-        --db-user="${MYSQL_USER}" \
-        --db-password="${MYSQL_PASSWORD}" \
+        --db-host="${DB_HOST}" \
+        --db-name="${DB_DATABASE}" \
+        --db-user="${DB_USER}" \
+        --db-password="${DB_PASSWORD}" \
         --admin-firstname="${ADMIN_FIRSTNAME}" \
         --admin-lastname="${ADMIN_LASTNAME}" \
         --admin-email="${ADMIN_EMAIL}" \

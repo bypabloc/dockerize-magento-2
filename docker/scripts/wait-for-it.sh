@@ -8,10 +8,10 @@ set -e
 cmd="$@"
 
 # Host y puerto de MySQL
-mysql_host="${MYSQL_HOST}"
-mysql_port="${MYSQL_PORT}"
+db_host="${DB_HOST}"
+db_port="${DB_PORT}"
 # Esperar a que MySQL esté disponible
-until nc -z "$mysql_host" $mysql_port; do
+until nc -z "$db_host" $db_port; do
   >&2 echo "MySQL is unavailable - sleeping"
   sleep 1
 done

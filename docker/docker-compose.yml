@@ -1,4 +1,4 @@
-# Path: docker-compose.yml
+# Path: docker/docker-compose.yml
 
 version: '3'
 
@@ -8,11 +8,13 @@ volumes:
 
 services:
   web:
-    build: .
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
     container_name: magento2
     ports:
       - "${BASE_URL_PORT:-8087}:80"
-    env_file: .env
+    env_file: ../.env
     depends_on:
       - db
       - elasticsearch
@@ -21,15 +23,15 @@ services:
     image: mysql:5.7
     container_name: magento2-db
     ports:
-      - "${MYSQL_PORT_EXPOSED:-3317}:${MYSQL_PORT:-3306}"
-    env_file: .env
+      - "${DB_PORT_EXPOSED:-3317}:${DB_PORT:-3306}"
+    env_file: ../.env
     volumes:
       - db-data:/var/lib/mysql
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
     container_name: magento2-elasticsearch
-    env_file: .env
+    env_file: ../.env
     environment:
       - discovery.type=single-node
     ports:
